@@ -11,15 +11,7 @@
 </head>
 <body>
   <header class="header">
-    <nav class="navbar">
-      <div class="logo">Foodie<span>Delight</span></div>
-      <ul class="nav-links">
-        <li><a href="">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#login" class="btn">Login</a></li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/navbar :: navbar"></div>
     <div class="hero">
       <h1>Delicious Food Delivered to Your Doorstep</h1>
       <p>Order your favorite meals anytime, anywhere.</p>
@@ -82,13 +74,6 @@
     </div>
   </section>
 
-  <footer id="contact" class="footer">
-    <div class="container">
-      <h2>Contact Us</h2><br>
-      <p><a href="mailto:hjilani15@gmail.com"> Email: support@foodiedelight.com</a></p>
-      <p><a href="tel:+923313591983">+923313591983</a></p>
-      <p>&copy; 2024 Foodie Delight. All rights reserved.</p>
-    </div>
-  </footer>
+  <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
