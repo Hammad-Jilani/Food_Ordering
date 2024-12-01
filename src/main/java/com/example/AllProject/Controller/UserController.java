@@ -24,7 +24,7 @@ public class UserController {
     public String authenticate(@RequestParam String email,@RequestParam String password,Model model){
         Optional<User> optUser = userService.findByEmailAndPassword(email,password);
         if (optUser.isPresent()){
-           return "landingPage";
+           return "./html/landingPage";
         }else{
             model.addAttribute("error","Incorrect Value");
             return "redirect:/";
