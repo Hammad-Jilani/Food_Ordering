@@ -28,14 +28,17 @@ header {
 }
 
 .admin-sections {
-  display: grid;
-  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .section {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
+  width: 80vw;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 

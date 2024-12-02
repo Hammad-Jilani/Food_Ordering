@@ -27,6 +27,7 @@
                 <th>Price</th>
                 <th>Address</th>
                 <th>Ordered Time:</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                 <td th:text=" '$'+${order.price}"></td>
                 <td th:text="${order.address}"></td>
                 <td th:text="${order.time}"></td>
+                <td th:text="${order.status}"></td>
             </tr>
             </tbody>
         </table>

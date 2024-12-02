@@ -16,7 +16,7 @@
 
 <main class="main-content">
     <div class="dashboard">
-        <h2>Admin Dashboard</h2>
+        <h2 style="text-align: center;">Admin Dashboard</h2>
         <div class="admin-sections">
             <div class="section">
                 <h3>Your Orders</h3>
@@ -30,6 +30,8 @@
                         <th>Price</th>
                         <th>Address</th>
                         <th>Ordered Time:</th>
+                        <th>Status:</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,7 +42,14 @@
                         <td th:text="${order.quantity}"></td>
                         <td th:text=" '$'+${order.price}"></td>
                         <td th:text="${order.address}"></td>
+
                         <td th:text="${order.time}"></td>
+                        <td th:text="${order.status}"></td>
+                        <td>
+                            <form th:action="@{/orders/action/{id}(id=${order.order_id})}" method="post">
+                                <button type="submit">Deliver</button>
+                            </form>
+
                     </tr>
                     </tbody>
                 </table>

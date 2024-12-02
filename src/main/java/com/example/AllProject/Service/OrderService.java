@@ -25,6 +25,12 @@ public class OrderService {
     @Autowired
     private UserRepository userRepository;
 
+    public Optional<Order> getOrderById(Integer id){
+        return orderRepository.findById(id);
+    }
+    public void save(Order order){
+        orderRepository.save(order);
+    }
     public Order createOrder(Integer userId, Integer foodId, Integer quantity) {
         Optional<User> userOpt = userRepository.findById(userId);
         Optional<Food> foodOpt = foodRepository.findById(foodId);
