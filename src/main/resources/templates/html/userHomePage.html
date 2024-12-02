@@ -24,27 +24,19 @@
                 <th>Order ID</th>
                 <th>Item</th>
                 <th>Quantity</th>
-                <th>Status</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Ordered Time:</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>#001</td>
-                <td>Cheesy Burger</td>
-                <td>2</td>
-                <td>Delivered</td>
-            </tr>
-            <tr>
-                <td>#002</td>
-                <td>Margherita Pizza</td>
-                <td>1</td>
-                <td>In Progress</td>
-            </tr>
-            <tr>
-                <td>#003</td>
-                <td>Italian Pasta</td>
-                <td>3</td>
-                <td>Pending</td>
+            <tr th:each="order :${session.orders}">
+                <td th:text="${order.order_id}"></td>
+                <td th:text="${order.foodName}"></td>
+                <td th:text="${order.quantity}"></td>
+                <td th:text=" '$'+${order.price}"></td>
+                <td th:text="${order.address}"></td>
+                <td th:text="${order.time}"></td>
             </tr>
             </tbody>
         </table>

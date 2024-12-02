@@ -56,6 +56,7 @@ public class CartController {
         User user = (User)session.getAttribute("currentUser");
         List<Cart> cartItems = cartService.getCartItems(user);
         model.addAttribute("cartItems", cartItems);
+        session.setAttribute("items",cartItems);
         return "./html/cart"; // Return cart.html view
     }
 
