@@ -1,11 +1,17 @@
-<div th:fragment="navbar">
+<div th:fragment="navbar" xmlns:th="http://www.w3.org/1999/xhtml">
   <nav class="navbar">
     <div class="logo">Foodie<span>Delight</span></div>
     <ul class="nav-links">
-      <li><a href="@{/users/about}">About</a></li>
-      <li><a href="#menu">Menu</a></li>
+      <li><a href="#">About</a></li>
+      <li><a th:href="@{/users/menu}">Menu</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#login" class="btn">Login</a></li>
+<!--      <div th:if="${session.status.equals('Logged in')}">-->
+<!--        <li><a th:href="@{/users/logout}" class="btn">Logout</a></li>-->
+<!--      </div>-->
+<!--      <div th:else>-->
+        <li><a th:href="@{/users/login}" class="btn">Login</a></li>
+<!--      </div>-->
+
     </ul>
   </nav>
 </div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Food Ordering</title>
+    <link rel="stylesheet" href="../styles/landing.css">
+    <link rel="stylesheet" href="../styles/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+</header>
+
+<main class="main-content">
+    <h2 th:text="'Welcome, '+ ${session.currentUser.username}"> </h2>
+    <div class="order-section">
+        <h3>Your Orders</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#001</td>
+                <td>Cheesy Burger</td>
+                <td>2</td>
+                <td>Delivered</td>
+            </tr>
+            <tr>
+                <td>#002</td>
+                <td>Margherita Pizza</td>
+                <td>1</td>
+                <td>In Progress</td>
+            </tr>
+            <tr>
+                <td>#003</td>
+                <td>Italian Pasta</td>
+                <td>3</td>
+                <td>Pending</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="profile-section">
+        <h3>Your Profile</h3>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> johndoe@example.com</p>
+        <p><strong>Phone:</strong> +1234567890</p>
+    </div>
+</main>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

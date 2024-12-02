@@ -13,13 +13,13 @@ public class UserService {
     private UserRepository userRepository;
 
     public void save(User user){
-        user.setRole("User");
+        user.setRole("Customer");
         userRepository.save(user);
     }
     public Optional<User> findByUsername(String name){
         return userRepository.findByUsername(name);
     }
-    public Optional<User> findByEmailAndPassword(String email,String password){
-        return userRepository.findByEmailAndPassword(email,password);
+    public Optional<User> findByEmailAndPasswordAndRole(String email,String password,String role){
+        return userRepository.findByEmailAndPasswordAndRole(email,password,role);
     }
 }

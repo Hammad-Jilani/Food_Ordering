@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Foods Page</title>
+    <link rel="stylesheet" href="../styles/register.css">
+</head>
+<body>
+<div class="register-container">
+    <div class="form-wrapper">
+        <h1>Add Food Account</h1>
+        <p class="sub-text">Enter to add Food.</p>
+        <form th:action="@{/foods/enter}" th:object="${food}" method="post">
+            <div class="input-group">
+                <label for="name">Food Name : </label>
+                <input type="text" id="name" th:field="*{name}" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Description : </label>
+                <input type="text" id="email" th:field="*{description}" placeholder="Enter your description" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Enter Price : </label>
+                <input type="text" id="password" th:field="*{price}" placeholder="Enter price" required>
+            </div>
+            <div class="input-group">
+                <label for="role">Availability</label>
+                <select name="role" id="role" th:field="*{available}" required>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

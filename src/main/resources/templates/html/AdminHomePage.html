@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Food Ordering</title>
+
+    <link rel="stylesheet" href="../styles/landing.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div th:replace="fragments/AdminNav :: AdminNav"></div>
+</header>
+
+<main class="main-content">
+    <div class="dashboard">
+        <h2>Admin Dashboard</h2>
+
+        <div class="admin-sections">
+            <div class="section">
+                <h3>Manage Users</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>John Doe</td>
+                        <td>johndoe@example.com</td>
+                        <td>Customer</td>
+                        <td><button>Edit</button> <button>Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Jane Smith</td>
+                        <td>janesmith@example.com</td>
+                        <td>Admin</td>
+                        <td><button>Edit</button> <button>Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>Manage Orders</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Cheesy Burger</td>
+                        <td>2</td>
+                        <td>Delivered</td>
+                        <td><button>Update</button> <button>Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Margherita Pizza</td>
+                        <td>1</td>
+                        <td>In Progress</td>
+                        <td><button>Update</button> <button>Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>Manage Foods</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Available</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="foodItem : ${foodItems}">
+                        <td th:text="${foodItem.name}"></td>
+                        <td th:text="${foodItem.description}"></td>
+                        <td th:text="${foodItem.price}"></td>
+                        <td th:text="${foodItem.available}"></td>
+                        <td>
+                            <a class="edit" th:href="@{/foods/edit/id(id=${foodItem.id})}">Edit</a><br>
+                            <form th:action="@{/foods/delete/{id}(id=${foodItem.id})}" method="post">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

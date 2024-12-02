@@ -56,7 +56,8 @@ h1 {
   color: #555;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -66,7 +67,13 @@ h1 {
   transition: all 0.3s ease-in-out;
 }
 
-.input-group input:focus {
+.input-group select {
+  appearance: none;
+  /* Remove default browser styles */
+}
+
+.input-group input:focus,
+.input-group select:focus {
   border-color: #2575fc;
   box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
 }

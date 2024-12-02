@@ -1,0 +1,29 @@
+.main-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.order-section,
+.profile-section {
+  margin-bottom: 20px;
+}
+
+.order-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-section th,
+.order-section td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.order-section th {
+  background-color: #ff7e5f;
+  color: white;
+}
