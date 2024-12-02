@@ -31,6 +31,10 @@
                 <input type="text" id="url" th:field="*{url}" placeholder="Enter Image URL" required>
             </div>
             <div class="input-group">
+                <label for="quantity">Quantity : </label>
+                <input type="text" id="quantity" th:field="*{quantity}" placeholder="Enter quantity" required>
+            </div>
+            <div class="input-group">
                 <label for="role">Availability</label>
                 <select name="role" id="role" th:field="*{available}" required>
                     <option value="true">True</option>

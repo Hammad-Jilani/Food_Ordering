@@ -15,11 +15,21 @@ public class Food {
     private double price;
     private boolean available;
     private String url;
+    private Integer quantity;
 
     public Food() {
     }
 
-    public Food(Integer id,String url, String name, String description, double price, boolean available) {
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Food(Integer quantity, Integer id, String url, String name, String description, double price, boolean available) {
+        this.quantity=quantity;
         this.id = id;
         this.name = name;
         this.description = description;

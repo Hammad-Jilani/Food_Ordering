@@ -19,13 +19,12 @@
 
     <div class="food-cards-container">
         <div th:each="food : ${foodItems}" class="food-card">
-
                 <img th:src="@{${food.url}}" alt="Food Image" class="food-image"/>
                 <h3 th:text="${food.name}">Food Name</h3>
                 <p th:text="${food.description}">Food Description</p>
                 <p th:text="'Price: $ ' + ${food.price}">Food Price</p>
             <div th:if="${food.available}">
-                <a th:href="@{/add-to-cart/{id}(id=${food.id})}" class="order-btn">Add To Cart</a>
+                <a th:href="@{/cart/add/{foodId}(foodId=${food.id})}" class="order-btn">Add to Cart</a>
             </div>
             <div th:unless="${food.available}">
                 <p style="color: red;">Sold Out</p>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Food Ordering</title>
+    <link rel="stylesheet" th:href="@{/styles/landing.css}">
+    <link rel="stylesheet" th:href="@{/styles/user.css}">
+    <link rel="stylesheet" th:href="@{/styles/menu.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+</header>
+
+<div class="food-details" style="
+    text-align: center;
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+">
+    <h1 style="
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    ">Food Details</h1>
+    <div>
+        <img th:src="@{${food.url}}" alt="Food Image" style="
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        ">
+    </div>
+    <div>
+        <h2 th:text="${food.name}" style="
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 10px;
+        "></h2>
+        <p th:text="${food.description}" style="
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        "></p>
+        <p style="
+            font-size: 1.2rem;
+            color: #e53946;
+            margin-bottom: 10px;
+        ">Price: <span th:text="${food.price}"></span> USD</p>
+        <p style="
+            font-size: 1rem;
+            margin-bottom: 20px;
+        ">Availability: <span th:text="${food.available ? 'Available' : 'Out of Stock'}"></span></p>
+
+        <form th:action="@{/cart/add/{foodId}(foodId=${food.id})}" method="POST" style="
+            margin-top: 20px;
+        ">
+            <input type="hidden" name="foodId" th:value="${food.id}" />
+            <label for="quantity" style="
+                display: block;
+                margin-bottom: 5px;
+                font-size: 1rem;
+                color: #555;
+            ">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" th:max="${food.quantity}" required style="
+                width: 10vw;
+                padding: 5px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 1rem;
+            "><br><br>
+            <button type="submit" style="
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #3b8c3a;
+                color: white;
+                text-decoration: none;
+                border: none;
+                border-radius: 5px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            ">Add to Cart</button>
+        </form>
+    </div>
+    <a style="
+        color: #3b8c3a;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 1rem;
+    " th:href="@{/users/menu}">Back to Menu</a>
+</div>
+
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

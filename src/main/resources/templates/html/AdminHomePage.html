@@ -28,6 +28,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
+
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -89,6 +90,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Available</th>
                         <th>Actions</th>
                     </tr>
@@ -98,6 +100,7 @@
                         <td th:text="${foodItem.name}"></td>
                         <td th:text="${foodItem.description}"></td>
                         <td th:text=" 'USD'+ ' '+ ${foodItem.price}"></td>
+                        <td th:text="${foodItem.quantity}"></td>
                         <td th:text="${foodItem.available}"></td>
                         <td>
                             <a class="edit" th:href="@{/foods/edit/{id}(id=${foodItem.id})}">Edit</a><br>
