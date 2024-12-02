@@ -58,8 +58,9 @@ public class UserController {
         return "./html/register";
     }
     @PostMapping("/register")
-    public String savingUser(@ModelAttribute User user,Model model){
+    public String savingUser(@ModelAttribute User user,Model model,HttpSession session){
         userService.save(user);
+        session.setAttribute("currentUser",user);
         return "./html/userHomePage";
     }
     @GetMapping("/admin")
@@ -72,5 +73,11 @@ public class UserController {
         }else{
             return "redirect:/users/login";
         }
+    }
+    @GetMapping("/menu")
+    public String menu(Model model){
+        List<Food> list = foodService.searchAllFood();
+        model.addAttribute("foodItems",list);
+        return "./html/menu";
     }
 }

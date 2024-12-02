@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Food Ordering</title>
+    <link rel="stylesheet" th:href="@{/styles/landing.css}">
+    <link rel="stylesheet" th:href="@{/styles/user.css}">
+    <link rel="stylesheet" th:href="@{/styles/menu.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+</header>
+
+<main class="main-content">
+    <h2 style="text-align: center;">Our Food Items</h2>
+
+    <div class="food-cards-container">
+        <div th:each="food : ${foodItems}" class="food-card">
+
+                <img th:src="@{${food.url}}" alt="Food Image" class="food-image"/>
+                <h3 th:text="${food.name}">Food Name</h3>
+                <p th:text="${food.description}">Food Description</p>
+                <p th:text="'Price: $ ' + ${food.price}">Food Price</p>
+            <div th:if="${food.available}">
+                <a th:href="@{/add-to-cart/{id}(id=${food.id})}" class="order-btn">Add To Cart</a>
+            </div>
+            <div th:unless="${food.available}">
+                <p style="color: red;">Sold Out</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

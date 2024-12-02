@@ -14,16 +14,26 @@ public class Food {
     private String description;
     private double price;
     private boolean available;
+    private String url;
 
     public Food() {
     }
 
-    public Food(Integer id, String name, String description, double price, boolean available) {
+    public Food(Integer id,String url, String name, String description, double price, boolean available) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.available = available;
+        this.url=url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public void setId(Integer id) {

@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Food Ordering</title>
 
-    <link rel="stylesheet" href="../styles/landing.css">
-    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" th:href="@{/styles/landing.css}">
+    <link rel="stylesheet" th:href="@{/styles/admin.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="header">
-    <div th:replace="fragments/AdminNav :: AdminNav"></div>
+    <div th:replace="~{fragments/AdminNav :: AdminNav}"></div>
 </header>
 
 <main class="main-content">
@@ -97,10 +97,10 @@
                     <tr th:each="foodItem : ${foodItems}">
                         <td th:text="${foodItem.name}"></td>
                         <td th:text="${foodItem.description}"></td>
-                        <td th:text="${foodItem.price}"></td>
+                        <td th:text=" 'USD'+ ' '+ ${foodItem.price}"></td>
                         <td th:text="${foodItem.available}"></td>
                         <td>
-                            <a class="edit" th:href="@{/foods/edit/id(id=${foodItem.id})}">Edit</a><br>
+                            <a class="edit" th:href="@{/foods/edit/{id}(id=${foodItem.id})}">Edit</a><br>
                             <form th:action="@{/foods/delete/{id}(id=${foodItem.id})}" method="post">
                                 <button type="submit">Delete</button>
                             </form>
@@ -113,6 +113,6 @@
     </div>
 </main>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
