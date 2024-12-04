@@ -68,7 +68,7 @@ public class UserController {
     public String savingUser(@ModelAttribute User user,Model model,HttpSession session){
         userService.save(user);
         session.setAttribute("currentUser",user);
-        return "./html/userHomePage";
+        return "redirect:/users/login";
     }
     @GetMapping("/admin")
     public String admin(HttpSession session,Model model){

@@ -28,7 +28,7 @@ public class Cart {
         this.food = food;
         this.quantity = quantity;
     }
-
+          
     public Cart(User user, Food food, Integer quantity) {
         this.user = user;
         this.food = food;
