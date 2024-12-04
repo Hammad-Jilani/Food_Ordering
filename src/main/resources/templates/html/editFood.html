@@ -10,8 +10,8 @@
 <body>
 <div class="register-container">
     <div class="form-wrapper">
-        <h1>Edit Food Account</h1>
-        <p class="sub-text">Enter to add Food.</p>
+        <h1>Edit Food</h1>
+        <p class="sub-text">Enter to edit Food.</p>
         <form th:action="@{/foods/edit}" th:object="${food}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <div class="input-group">

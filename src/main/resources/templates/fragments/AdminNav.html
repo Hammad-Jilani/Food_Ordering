@@ -4,7 +4,12 @@
         <ul class="nav-links">
             <li><a th:href="@{/foods/enter}">Add Food</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a th:href="@{/users/login}" class="btn">Login</a></li>
+            <div th:if="${session.status.equals('Logged in')}">
+                <li><a th:href="@{/users/logout}" class="btn">Logout</a></li>
+            </div>
+            <div th:unless="${session.status.equals('Logged in')}">
+                <li><a th:href="@{/users/login}" class="btn">Login</a></li>
+            </div>
         </ul>
     </nav>
 </div>

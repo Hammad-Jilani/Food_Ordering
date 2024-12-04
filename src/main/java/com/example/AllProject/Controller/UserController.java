@@ -75,6 +75,8 @@ public class UserController {
         User current = (User) session.getAttribute("currentUser");
         if(current!=null && current.getRole().equals("Owner")) {
             List<Food> foodItems =foodService.searchAllFood();
+            List<Order> listOrder = orderService.getAllOrders();
+            session.setAttribute("orders",listOrder);
             model.addAttribute("foodItems",foodItems);
             return "./html/AdminHomePage";
         }else{
@@ -98,5 +100,10 @@ public class UserController {
         List<Food> list = foodService.searchAllFood();
         model.addAttribute("foodItems",list);
         return "./html/menu";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/users/login";
     }
 }
