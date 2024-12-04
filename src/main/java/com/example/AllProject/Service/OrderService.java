@@ -67,7 +67,7 @@ public class OrderService {
             throw new IllegalArgumentException("User not found");
         }
 
-        return orderRepository.findByUser(userOpt.get());
+        return orderRepository.findByUser(userOpt.get().getId());
     }
 
     public Order updateOrderStatus(Integer orderId, String status) {
@@ -87,7 +87,6 @@ public class OrderService {
             throw new IllegalArgumentException("Order not found");
         }
 
-        // Restore stock
         Order order = orderOpt.get();
         Food food = order.getFood();
         food.setQuantity(food.getQuantity() + order.getQuantity());

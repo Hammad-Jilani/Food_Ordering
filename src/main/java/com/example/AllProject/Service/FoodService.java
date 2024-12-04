@@ -5,7 +5,6 @@ import com.example.AllProject.Repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,19 +12,24 @@ import java.util.Optional;
 public class FoodService {
     @Autowired
     private FoodRepository foodRepository;
-    public List<Food> searchAllFood(){
-        return foodRepository.findAll();
+
+    public List<Food> searchAllFood() {
+        return foodRepository.findAllFood();
     }
-    public void save(Food food){
+
+    public void save(Food food) {
         foodRepository.save(food);
     }
-    public List<Food> searchByAvailability(boolean available){
+
+    public List<Food> searchByAvailability(boolean available) {
         return foodRepository.findByAvailable(available);
     }
-    public Optional<Food> searchById(Integer id){
-        return foodRepository.findById(id);
+
+    public Optional<Food> searchById(Integer id) {
+        return foodRepository.findFoodById(id);
     }
-    public void deleteById(Integer id){
-        foodRepository.deleteById(id);
+
+    public void deleteById(Integer id) {
+        foodRepository.deleteFoodById(id);
     }
 }

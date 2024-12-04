@@ -37,8 +37,10 @@ public class UserController {
     @PostMapping("/login")
     public String authenticate(HttpSession session, @RequestParam String email, @RequestParam String password, @RequestParam String role,Model model){
         Optional<User> optUser = userService.findByEmailAndPasswordAndRole(email,password,role);
+
         if (optUser.isPresent()){
-            session.setAttribute("currentUser",optUser.get());
+            User user = optUser.get();
+            session.setAttribute("currentUser",user);
             session.setAttribute("status","Logged in");
             if(role.equals("Customer")){
                 List<Order> orders = orderService.getOrdersByUser(optUser.get().getId());

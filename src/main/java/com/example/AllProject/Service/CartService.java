@@ -6,6 +6,8 @@ import com.example.AllProject.Model.User;
 import com.example.AllProject.Repository.CartRepository;
 import com.example.AllProject.Repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,10 @@ import java.util.Optional;
 
 @Service
 public class CartService {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @Autowired
     private FoodRepository foodRepository;
     @Autowired
@@ -30,11 +36,16 @@ public class CartService {
         return cartRepository.findAll();
     }
     public List<Cart> getCartItems(User user) {
-        return cartRepository.findByUser(user);
+        return cartRepository.findByUser(user.getId());
     }
 
-    // Remove an item from the cart
     public void removeFromCart(Integer cartId) {
         cartRepository.deleteById(cartId);
     }
+
+    public List<Cart> getAllCartItems() {
+        String sql = "select * from cart c join food f on c.food_id = f.id join user_table u ON c.user_id = u.user_id";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class));
+    }
+
 }
