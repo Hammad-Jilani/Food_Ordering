@@ -42,8 +42,7 @@ public class OrderService {
         if (food.getQuantity() < quantity) {
             throw new IllegalArgumentException("Insufficient stock for the selected food item");
         }
-        food.setQuantity(food.getQuantity() - quantity);
-        foodRepository.save(food);
+
         Order order = new Order();
         order.setFoodName(food.getName());
         order.setAddress(user.getAddress());
@@ -56,6 +55,7 @@ public class OrderService {
         order.setUserName(user.getUsername());
         return orderRepository.save(order);
     }
+
 
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
@@ -94,4 +94,10 @@ public class OrderService {
 
         orderRepository.delete(order);
     }
+
+
+
+
+
+
 }

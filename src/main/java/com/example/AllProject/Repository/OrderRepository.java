@@ -4,6 +4,7 @@ import com.example.AllProject.Model.Order;
 import com.example.AllProject.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
@@ -26,4 +27,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query("select o from Order o where o.user.id = :userId order by o.time DESC")
     List<Order> findMostRecentOrderByUser(@Param("userId") Integer userId);
+
+    @Procedure(procedureName = "create_order")
+    String createOrderProcedure(
+            @Param("user_id") Integer userId,
+            @Param("food_id") Integer foodId,
+            @Param("order_quantity") Integer orderQuantity
+    );
 }

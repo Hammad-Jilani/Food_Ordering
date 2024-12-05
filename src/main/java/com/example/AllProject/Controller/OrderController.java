@@ -43,11 +43,10 @@ public class OrderController {
 
     @GetMapping("/pay")
     public String payment(HttpSession session) {
-        User user = (User ) session.getAttribute("currentUser");
+        User user = (User) session.getAttribute("currentUser");
         if (user == null) {
             return "redirect:/login";
         }
-
         List<Cart> cartItems = cartService.getCartItems(user);
         for (Cart cartItem : cartItems) {
             Food foodItem = cartItem.getFood();
@@ -60,19 +59,16 @@ public class OrderController {
 
                 if (availableQuantity >= orderedQuantity) {
                     orderService.createOrder(user.getId(), foodItem.getId(), orderedQuantity);
-                    food.setQuantity(availableQuantity - orderedQuantity);
-                    foodService.save(food);
                 } else {
                     return "redirect:/cart/";
                 }
-
                 cartService.removeFromCart(cartItem.getId());
             } else {
                 return "redirect:/cart/";
             }
         }
-        List<Order> orders = orderService.getOrdersByUser(user.getId());
-//        session.setAttribute("orders",orders);
         return "redirect:/users/user";
     }
+
+
 }
